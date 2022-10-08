@@ -1,9 +1,20 @@
-.class-buttle {
-    width: 93px !important;
-    height: 93px !important;
+:root{
+    --size-class-buttle:40px;
 }
-a{
+
+.c-table .class-buttle {
+    width: var(--size-class-buttle);
+    height: var(--size-class-buttle);
+}
+.c-table tbody td{
+   vertical-align: middle;
+}
+.c-table tbody td:nth-child(3) a{
    color:black;
    font-weight:700;
    font-size:2em;
+   vertical-align: middle;
+}
+.c-table tbody td:nth-child(3){
+   vertical-align: middle;
 }
