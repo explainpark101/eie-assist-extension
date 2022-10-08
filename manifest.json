@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "author":"박재형",
+    "name": "EIE LMS Assistant",
+    "version": "0.1",
+    "description": "eie LMS의 사용을 돕습니다.",
+    "content_scripts": [
+
+    {
+      "js": [ "dashboard.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php"]
+    },
+    {
+      "js": [ "classlist.js"],
+      "css":["classlist.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.list.php"]
+    }
+  
+  ]
+  
+  
+  }
+  
