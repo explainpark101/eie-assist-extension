@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "author":"박재형",
     "name": "EIE LMS Assistant",
-    "version": "0.1",
+    "version": "0.2",
     "description": "eie LMS의 사용을 돕습니다.",
     "content_scripts": [
 
