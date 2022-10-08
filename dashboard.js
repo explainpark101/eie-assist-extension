@@ -1,7 +1,13 @@
 function AddSearchBox(){
     let box_Classes = document.querySelector("div.dashboard-box-1 div.tit");
-    box_Classes.querySelector("h2").insertAdjacentHTML("beforeend",`
-    <input type='text' id='class-searchbox' style="border-radius:10px; border: 1px solid white; color:black; font-weight:500;" placeholder="검색">
+    box_Classes.querySelector("h2").insertAdjacentHTML("afterend",`
+    <input type='text' id='class-searchbox' 
+        style="border-radius:10px;
+        border: 1px solid white;
+        color:black; 
+        font-weight:500;
+        max-width:25%;
+    " placeholder="검색">
     `)
 }
 function searchByClassname(searchBox){
