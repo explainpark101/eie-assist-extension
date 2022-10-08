@@ -6,7 +6,7 @@ function AddSearchBox(){
         border: 1px solid white;
         color:black; 
         font-weight:500;
-        max-width:25%;
+        max-width:10%;
     " placeholder="검색">
     `)
 }
