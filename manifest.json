@@ -27,7 +27,7 @@
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.list.php*"]
     },
     {
-      "js": [ "classregister/classregister.js"],
+      "js": ["background/jquery.nodom.js", "classregister/classregister.js"],
       "css":["classregister/classregister.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.register.php*"]
     }
