@@ -1,8 +1,8 @@
 function AddSearchBox(){
-    let box_Classes = document.querySelector("div.dashboard-box-1 div.tit");
-    box_Classes.querySelector("h2").insertAdjacentHTML("afterend",`
+    let toolbar = document.querySelector("div#eie-assist-toolbar");
+    toolbar.insertAdjacentHTML("afterbegin",`
     <input type='text' id='class-searchbox' 
-        class="search-custom-input" placeholder="검색">
+        class="search-custom-input" placeholder="Classes 검색">
     `)
 }
 function searchByClassname(searchBox){
@@ -13,7 +13,9 @@ function searchByClassname(searchBox){
     }
     for(c of classList){
         if(c.querySelector("div.class_cont dl.director dt strong a").innerText.toLowerCase().includes(searchBox.value.toLowerCase()) || 
-            c.querySelector("div.class_cont dl.director dd strong").innerText.toLowerCase().includes(searchBox.value.toLowerCase())){
+            c.querySelector("div.class_cont dl.director dd strong").innerText.toLowerCase().includes(searchBox.value.toLowerCase()) ||
+            c.querySelectorAll("div.class_cont dl.director dd strong")[1].innerText.toLowerCase().includes(searchBox.value.toLowerCase())
+            ){
             c.style.display = "";
         }
         else{
@@ -35,3 +37,6 @@ searchBox.addEventListener("keydown",(event)=>{
 searchBox.addEventListener("keyup",(event)=>{
     searchByClassname(event.target);
 });
+
+
+

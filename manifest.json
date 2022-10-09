@@ -2,22 +2,40 @@
     "manifest_version": 3,
     "author":"박재형",
     "name": "EIE LMS Assistant",
-    "version": "0.3",
+    "version": "0.5",
     "description": "eie LMS의 사용을 돕습니다.",
     "content_scripts": [
 
     { 
-      "css":["dashboard.css"],
-      "js": [ "dashboard.js"],
-      "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php"]
+      "css":["dashboard/dashboard.css"],
+      "js": ["background/jquery.nodom.js","dashboard/getInformations.js","dashboard/dashboard.js", "main/main.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php*"]
     },
     {
-      "js": [ "classlist.js"],
-      "css":["classlist.css"],
-      "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.list.php"]
+      "js": ["background/jquery.nodom.js","classlist/classlist.js", "main/main.js"],
+      "css":["classlist/classlist.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.list.php*"]
+    },
+    {
+      "js": [ "main/main.js"],
+      "css":["main/main.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/*"]
+    },
+    {
+      "js": [ "memberlist/memberlist.js"],
+      "css":["memberlist/memberlist.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.list.php*"]
+    },
+    {
+      "js": [ "classregister/classregister.js"],
+      "css":["classregister/classregister.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.register.php*"]
     }
   
-  ]
+  ],
+  "background": {
+    "service_workers" : ["background/jquery.nodom.js"]
+  } 
   
   
   }
