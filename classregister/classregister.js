@@ -3,16 +3,54 @@ let 원본URL = "https://eie.co.kr/eielms/pages/modal/academy/class.student.sele
 
 function 학생목록불러오기(){
     let iframe = document.querySelector("div.modal iframe");
-    $(iframe).on("load",()=>{
+    iframe.addEventListener("load",()=>{
         let document = iframe.contentWindow.document;
-        console.log(document);
         let last_item = document.body.querySelector("#table2_last");
         var urlPoint = last_item.href.indexOf('page=');
-        let last_page_num = last_item.href.replace("&method=&search_where=&search_keyword=","").slice(urlPoint+5,0);
-        console.log(last_page_num);
+        let last_page_num = last_item.href.slice(urlPoint+5,-1).replace("&method=r&search_where=&search_keyword","");
+        let currentTable = document.querySelector(".c-table tbody");
+        for(let page_num = 2; page_num <= last_page_num; page_num++){
+            $.ajax({
+                url: studentsUrl+page_num,
+                contenttype: "html",
+                method:"GET",
+                success: (resp) => {
+                    let newDoc = document.createElement("html");
+                    newDoc.innerHTML = resp;
+                    let rows = newDoc.querySelectorAll(".c-table tbody tr");
+                    rows.forEach(row => {
+                        currentTable.insertAdjacentElement("beforeend",row);
+                    })
+                    console.log("완료!");
+                }
+            })
+        }
+        // 검색기능 구현하기
+        let searchbox = document.querySelector("input[name=search_keyword]");
+        searchbox.addEventListener("keydown",(e)=>{ //엔터키로 검색하기 죽이기
+            if(e.keyCode==13){e.preventDefault();}
+        });
+        searchbox.addEventListener("keyup",()=>{
+            iframeSearchbox(searchbox, iframe);
+        });
+        document.querySelector(".table_paginate").parentElement.parentElement.remove();
     })
-    
 }
+
+
+function iframeSearchbox(searchbox, iframe){
+    let document = iframe.contentWindow.document;
+    let allRows = document.querySelectorAll(".c-table tbody tr");
+    allRows.forEach(row => {
+        if(row.innerText.toLowerCase().includes(searchbox.value.toLowerCase()) || searchbox.value == ""){
+            row.style.display = "";
+        }
+        else{
+            row.style.display = "none";
+        }
+    })
+}
+
 /*
 모달창에 대해서 함수를 구현해야함. 다음 질의를 참고해야함.
 */
@@ -20,4 +58,8 @@ function 학생목록불러오기(){
 
 document.querySelector("button[data-modal-title='학생 선택']").addEventListener("click", ()=>{
     학생목록불러오기();
+})
+
+document.querySelector(".modal-view").addEventListener("loaded.bs.modal",function(e){
+    console.log("MODAL LOADED!zzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 })
