@@ -19,9 +19,10 @@ function 학생목록불러오기(){
                     newDoc.innerHTML = resp;
                     let rows = newDoc.querySelectorAll(".c-table tbody tr");
                     rows.forEach(row => {
+                        row.querySelector("input[type=checkbox]").classList.add("form-control");
                         currentTable.insertAdjacentElement("beforeend",row);
                     })
-                    console.log("완료!");
+                    // console.log("완료!");
                 }
             })
         }
@@ -34,6 +35,9 @@ function 학생목록불러오기(){
             iframeSearchbox(searchbox, iframe);
         });
         document.querySelector(".table_paginate").parentElement.parentElement.remove();
+        document.querySelector(".c-table").insertAdjacentHTML("afterend", `<button type="button" id="select_ok" class="btn btn-sm btn-primary">학생 등록</button>`);
+
+
     })
 }
 
