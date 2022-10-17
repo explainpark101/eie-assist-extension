@@ -1,0 +1,15 @@
+.search-custom-input{
+    border-radius: 6px;
+    border: 1px solid #b72025;
+    color: black; 
+    font-weight: 500;
+    height: 40px;
+    margin-right: 0.5em;
+}
+
+.btn-eie-assist{
+    color: white;
+    background-color: #b72025;
+    border-color: rgb(163, 29, 34);
+    font-weight: 500;
+}
