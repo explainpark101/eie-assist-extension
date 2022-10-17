@@ -19,3 +19,14 @@
     display: flex;
     justify-content:space-between;
 } */
+
+
+select#sort{
+    max-width: fit-content;
+    border: 1px solid #b72025;
+    border-radius:6px;
+    font-weight: 500;
+    height: 40px;
+    margin-right: 0.5em;
+    color: black; 
+}

@@ -34,11 +34,8 @@ function getClassList_teacher(){
                 let teachers = respList[1];
                 // let students = respList[2];
                 c.querySelectorAll("dd strong")[0].innerText = `강사(${teachers.querySelectorAll("span.title").length}명) : ` + Array.from(teachers.querySelectorAll("span.title")).map(x => x.innerText).join(", ");
-                // c.querySelectorAll("dd strong")[1].innerText = `학생(${students.querySelectorAll("span.title").length}명) : ` + Array.from(students.querySelectorAll("span.title")).map(x => x.innerText).join(", ");
-                
-                // for(i of Array.from(students.querySelectorAll("span.title")).map(x => x.innerText)){allStudentArray.push(i);};
-                // list = new Set(allStudentArray);
-                // document.querySelector("#오늘오는사람숫자").innerText = `(${list.size}명)`;
+                c.querySelectorAll("dd strong")[0].dataset.teacherNames = Array.from(teachers.querySelectorAll("span.title")).map(x => x.innerText).join(", ");
+
             },
             error:function(resp){
                 console.log(`error occured`, resp);
@@ -66,13 +63,12 @@ function overwriteNamesButton(HTMLclassName="btn btn-primary", innerText = "new 
 
     document.querySelector("div.tit h2").insertAdjacentHTML("beforeend", `
     <span id="오늘오는사람숫자"></span>
+    <span id="검색된숫자"></span>
     `);
 }
 
 
 overwriteNamesButton();
-
-
 
 function getClassList_student(){
     let url = "/eielms/process/json/get.academy.dashboard.json.php"
@@ -97,11 +93,13 @@ function getClassList_student(){
                 let students = data.student;
                 students = student_process(students);
                 c.querySelectorAll("dd strong")[1].innerText = `학생(${students.length}명) : ` + students.join(", ");
-                
+                c.querySelectorAll("dd strong")[1].dataset.studentNames = students.join(", ");
+                c.querySelectorAll("dd strong")[1].dataset.studentCount = students.length;
                 for(i of students){allStudentArray.push(i);};
                 list = new Set(allStudentArray);
                 document.querySelector("#오늘오는사람숫자").innerText = `(${list.size}명)`;
-            
+                document.querySelector("#검색된숫자").innerText = `(${list.size}명)`;
+                sortFunction();
             }
         })
     })
