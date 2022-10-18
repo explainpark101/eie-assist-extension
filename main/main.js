@@ -18,6 +18,9 @@ function headerNewButtonEmbeded(href="#", HTMLclassName="btn btn-primary", inner
 
 function 광고판이동(){
     let 광고판 = document.querySelector("div.header-container .nav-left .search-box");
+    광고판_btn = 광고판.querySelector("a");
+    광고판_btn.innerHTML = `<span>본사공지사항</span>`;
+    광고판_btn.classList.add("btn-eie-notice-list");
     광고판.style.float = "right";
     document.querySelector(".page-nav").insertAdjacentElement("afterbegin", 광고판);
 }

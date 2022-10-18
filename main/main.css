@@ -12,3 +12,14 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 600;
  }
+
+
+ .btn-eie-notice-list{
+    background-color: white;
+    height:fit-content;
+    min-height: unset !important;
+    height: 3em;
+    font-weight:700;
+    color:black;
+    
+ }

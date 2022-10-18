@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "author":"박재형",
     "name": "EIE LMS Assistant (중계)",
-    "version": "1.2",
+    "version": "1.3",
     "description": "eie LMS의 사용을 돕습니다.",
     "icons":{
       "16":"logo/logo16.png",
@@ -12,29 +12,39 @@
     "content_scripts": [
 
     { 
-      "css":["dashboard/dashboard.css"],
-      "js": ["background/jquery.nodom.js","dashboard/getInformations.js","dashboard/dashboard.js", "main/main.js"],
+      "css":["academy/dashboard/dashboard.css","main/main.css"],
+      "js": ["background/jquery.nodom.js","academy/dashboard/getInformations.js","academy/dashboard/dashboard.js", "main/main.js"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php*"]
     },
+    { 
+      "css":["main/main.css"],
+      "js": ["academy/member/myInformationChange.js", "main/main.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/member/mypage.php*"]
+    },
+    { 
+      "css":["teacher/dashboard/dashboard.css","main/main.css"],
+      "js": ["background/jquery.nodom.js","teacher/dashboard/getInformations.js","teacher/dashboard/dashboard.js", "main/main.js", "main/teacher.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/teacher/dashboard.php*"]
+    },
     {
-      "js": ["background/jquery.nodom.js","classlist/classlist.js", "main/main.js"],
-      "css":["classlist/classlist.css"],
+      "js": ["background/jquery.nodom.js","academy/classlist/classlist.js", "main/main.js"],
+      "css":["academy/classlist/classlist.css","main/main.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.list.php*"]
     },
     {
-      "js": [ "main/main.js"],
-      "css":["main/main.css"],
-      "matches": ["https://eie.co.kr/eielms/pages/*"]
-    },
-    {
-      "js": [ "memberlist/memberlist.js"],
-      "css":["memberlist/memberlist.css"],
+      "js": [ "academy/memberlist/memberlist.js"],
+      "css":["academy/memberlist/memberlist.css","main/main.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.list.php*"]
     },
     {
-      "js": ["background/jquery.nodom.js", "classregister/classregister.js"],
-      "css":["classregister/classregister.css"],
+      "js": ["background/jquery.nodom.js", "academy/classregister/classregister.js"],
+      "css":["academy/classregister/classregister.css","main/main.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.register.php*"]
+    },
+    {
+      "js": ["background/jquery.nodom.js", "academy/member/memberInformationEdit.js"],
+      "css":["main/main.css"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.register.php?method=u&uid=637281&page=1*"]
     }
   
   ],

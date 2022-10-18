@@ -1,0 +1,32 @@
+.search-custom-input{
+    border-radius: 6px;
+    border: 1px solid #b72025;
+    color: black; 
+    font-weight: 500;
+    height: 40px;
+    margin-right: 0.5em;
+}
+
+#eie-assist-toolbar{
+    display:flex;
+    justify-content: left;
+}
+#eie-assist-toolbar>*{
+    margin-bottom:2px;
+}
+
+/* div.tit{
+    display: flex;
+    justify-content:space-between;
+} */
+
+
+select#sort{
+    max-width: fit-content;
+    border: 1px solid #b72025;
+    border-radius:6px;
+    font-weight: 500;
+    height: 40px;
+    margin-right: 0.5em;
+    color: black; 
+}

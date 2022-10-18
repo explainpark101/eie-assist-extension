@@ -1,0 +1,49 @@
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+:root{
+   --size-class-buttle:1em;
+}
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+.c-table .class-buttle {
+    width: var(--size-class-buttle);
+    height: var(--size-class-buttle);
+}
+.c-table tbody td{
+   vertical-align: middle;
+}
+.c-table tbody td:nth-child(3) a{
+   color:black;
+   font-weight:700;
+   font-size:1.3em;
+   vertical-align: middle;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+.c-table tbody td:nth-child(3){
+   vertical-align: middle;
+}
+
+
+.btn-eie-assist.form-control{
+   border:1px solid #cd143c;
+   background-color: crimson;
+   color: white;
+}
+
+
+input[type=text].form-control[name=search_keyword]{
+   border: 1px solid crimson;
+}
+
+div.search-box>button[type=submit].form-control.mrg-top-20{
+   border:1px solid #cd143c;
+   background-color: crimson;
+   color: white;
+}
+
+
+
+table.c-table.thead td{
+   color:black;
+}

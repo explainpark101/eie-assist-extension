@@ -1,0 +1,5 @@
+table.c-table tbody tr:has(input[type=checkbox]:checked), table.c-table tbody tr:has(input[type=checkbox]:checked) *{
+    background-color:#b72025;
+    color:white;
+    font-weight:600;
+}
