@@ -7,4 +7,8 @@ function unlockBirthDate(){
     supportText.style.color = "crimson";
 }
 
-unlockBirthDate();
+const renderAll = () => {
+    unlockBirthDate();
+}
+
+activationTest(renderAll)

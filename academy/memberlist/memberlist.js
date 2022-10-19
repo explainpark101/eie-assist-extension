@@ -8,4 +8,8 @@ function notStudentColored(){
     })
 }
 
-notStudentColored();
+const renderAll = ()=>{
+    notStudentColored();
+}
+
+activationTest()

@@ -135,22 +135,29 @@ function sortFunction(){
 }
 
 
-console.log("EIE ASSIST LOADED!");
-AddSearchBox();
-let searchBox = document.querySelector("input#class-searchbox");
-searchBox.addEventListener("keydown",(event)=>{
-    if(event.keyCode == 13){
-        event.preventDefault();
-    }
-});
-searchBox.addEventListener("keyup",(event)=>{
-    searchByClassname(event.target);
-});
-
-insertSortMethod();
-document.querySelector("select#sort").addEventListener("click",(event)=>{
-    sortFunction();
-})
 
 
 
+
+
+const renderAll = ()=>{
+    overwriteNamesButton();
+    console.log("EIE ASSIST LOADED!");
+    AddSearchBox();
+    insertSortMethod();
+    let searchBox = document.querySelector("input#class-searchbox");
+    searchBox.addEventListener("keydown",(event)=>{
+        if(event.keyCode == 13){
+            event.preventDefault();
+        }
+    });
+    searchBox.addEventListener("keyup",(event)=>{
+        searchByClassname(event.target);
+    });
+    
+    document.querySelector("select#sort").addEventListener("click",(event)=>{
+        sortFunction();
+    })
+}
+
+activationTest(renderAll);

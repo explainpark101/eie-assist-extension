@@ -12,37 +12,32 @@
     "content_scripts": [
 
     { 
-      "css":["academy/dashboard/dashboard.css","main/main.css"],
-      "js": ["background/jquery.nodom.js","academy/dashboard/getInformations.js","academy/dashboard/dashboard.js", "main/main.js"],
-      "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php*"]
+      "css":["academy/dashboard/dashboard.css"],
+      "js": ["background/jquery.nodom.js","main/main.js","academy/dashboard/getInformations.js","academy/dashboard/dashboard.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/academy/dashboard.php*", "https://eie.co.kr/eielms/pages/teacher/dashboard.php*"]
     },
     { 
       "css":["main/main.css"],
-      "js": ["academy/member/myInformationChange.js", "main/main.js"],
+      "js": ["academy/member/myInformationChange.js"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/mypage.php*"]
     },
-    { 
-      "css":["teacher/dashboard/dashboard.css","main/main.css"],
-      "js": ["background/jquery.nodom.js","teacher/dashboard/getInformations.js","teacher/dashboard/dashboard.js", "main/main.js", "main/teacher.js"],
-      "matches": ["https://eie.co.kr/eielms/pages/teacher/dashboard.php*"]
-    },
     {
-      "js": ["background/jquery.nodom.js","academy/classlist/classlist.js", "main/main.js"],
-      "css":["academy/classlist/classlist.css","main/main.css"],
+      "js": ["background/jquery.nodom.js","main/main.js","academy/classlist/classlist.js"],
+      "css":["academy/classlist/classlist.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.list.php*"]
     },
     {
-      "js": [ "academy/memberlist/memberlist.js"],
-      "css":["academy/memberlist/memberlist.css","main/main.css"],
+      "js": [ "main/main.js","academy/memberlist/memberlist.js"],
+      "css":["academy/memberlist/memberlist.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.list.php*"]
     },
     {
-      "js": ["background/jquery.nodom.js", "academy/classregister/classregister.js"],
-      "css":["academy/classregister/classregister.css","main/main.css"],
+      "js": ["background/jquery.nodom.js","main/main.js", "academy/classregister/classregister.js"],
+      "css":["academy/classregister/classregister.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/class/class.register.php*"]
     },
     {
-      "js": ["background/jquery.nodom.js", "academy/member/memberInformationEdit.js"],
+      "js": ["background/jquery.nodom.js","main/main.js", "academy/member/memberInformationEdit.js"],
       "css":["main/main.css"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.register.php?method=u&uid=637281&page=1*"]
     }
@@ -50,7 +45,13 @@
   ],
   "background": {
     "service_workers" : ["background/jquery.nodom.js"]
-  } 
+  },
+  "action": {
+    "default_popup": "brower_action/index.html",
+    "default_title": "Test"
+  },
+  "permissions": ["activeTab", "scripting", "storage"]
+
   
   
   }

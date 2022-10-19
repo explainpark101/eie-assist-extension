@@ -68,7 +68,6 @@ function overwriteNamesButton(HTMLclassName="btn btn-primary", innerText = "new 
 }
 
 
-overwriteNamesButton();
 
 function getClassList_student(){
     let url = "/eielms/process/json/get.academy.dashboard.json.php"

@@ -4,4 +4,10 @@ function makeDashBoardLinkCorrectly(){
     return ;
 }
 
-makeDashBoardLinkCorrectly();
+const renderTeacher = ()=>{
+    makeDashBoardLinkCorrectly();
+
+}
+
+
+activationTest(renderTeacher);

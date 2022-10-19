@@ -26,9 +26,32 @@ function 광고판이동(){
 }
 
 
-headerNewButton("https://www.jlive.shop/", "btn btn-primary", "JLive LMS(Presentation Video)");
+const renderMain = ()=>{headerNewButton("https://www.jlive.shop/", "btn btn-primary", "JLive LMS(Presentation Video)");
 headerNewButton("https://www.youtube.com/channel/UCTF7qRuacBq0Eic_en4FYHw", "btn btn-danger", "EiE Presentation Server");
 headerNewButtonEmbeded("/eielms/pages/academy/community/cletter.list.php", "btn btn-info", "알림장");
 headerNewButtonEmbeded("/eielms/pages/academy/community/advice.list.php", "btn btn-info", "상담일지");
 
 광고판이동();
+}
+/**
+ * LocalStorage를 이용하여 코드가 맞을 경우, 사용가능한 상태로 변경됨.
+ * @returns boolean : 활성화여부
+ */
+
+
+const activationTest = async (callback) => {
+    // console.log(chrome.storage.local);
+    let resultParent = false;
+    await chrome.storage.local.get("EiE_ASSIST_activation",(result)=>{
+        let activationKey = result.EiE_ASSIST_activation;
+        // console.log(activationKey);
+        if(activationKey == "01088009369"){
+            resultParent = true;
+        }
+        if(resultParent){
+            callback();
+        }
+    });
+}
+
+activationTest(renderMain);

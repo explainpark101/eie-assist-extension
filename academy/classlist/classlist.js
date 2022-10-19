@@ -1,4 +1,4 @@
-function getAllRowsFromPages(){
+const classlistRendering = ()=>{function getAllRowsFromPages(){
     let ajaxArray = [];
     let allpages = document.querySelectorAll("div.table_paginate a");
     for( a of allpages ){
@@ -165,7 +165,6 @@ function sessionAutoLoad(){
 }
 
  
-console.log("EIE ASSIST LOADED!");
 addToolBar();
 getAllRowsFromPages();
 //  SortAll();
@@ -178,8 +177,8 @@ searchBox.addEventListener("keydown", function(event){
  })
 
  //session auto load
- document.querySelector(`select[name="search_target[PZ_LMS_CLASS.PZ_SESSION_UID]"]`)
-    .addEventListener("change", sessionAutoLoad)
-
-
+ document.querySelector(`select[name="search_target[PZ_LMS_CLASS.PZ_SESSION_UID]"]`).addEventListener("change", sessionAutoLoad)
+}
+ 
+ activationTest(classlistRendering);
 

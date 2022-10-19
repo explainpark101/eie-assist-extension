@@ -28,5 +28,9 @@ function removeWeirdRequiredFields(){
 
 }
 
-addChangeBirthDate();
-removeWeirdRequiredFields();
+
+const renderAll = ()=>{
+    addChangeBirthDate();
+    removeWeirdRequiredFields();
+}
+activationTest(renderAll)

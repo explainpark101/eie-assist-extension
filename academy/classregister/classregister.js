@@ -1,4 +1,4 @@
-let studentsUrl = "https://eie.co.kr/eielms/pages/modal/academy/class.student.select2.php?page=";
+const classregisterRendering = ()=>{let studentsUrl = "https://eie.co.kr/eielms/pages/modal/academy/class.student.select2.php?page=";
 let 원본URL = "https://eie.co.kr/eielms/pages/modal/academy/class.student.select2.php?page=12&method=&search_where=&search_keyword=";
 
 function removeCharactersFromArray(target,removeList){
@@ -226,3 +226,7 @@ window.addEventListener("load", ()=>{
 document.querySelector(".modal-view").addEventListener("loaded.bs.modal",function(e){
     console.log("MODAL LOADED!zzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 })
+}
+
+
+activationTest(classregisterRendering);
