@@ -45,6 +45,37 @@ const classlistRendering = ()=>{
         })
     }
 
+    function sessionLimit(){
+        var today = new Date();
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        let select = document.querySelector(`.main-content form div.search-container .search-box select.form-control`);
+        select.querySelectorAll("option").forEach(option=>{
+            let indicator = option.innerText.slice(0,7);
+            let option_year = new Number(indicator.slice(0,4));
+            let option_month = new Number(indicator.replace(option_year,"").replace("-",""));
+            if(mm == 12){
+                if(new Number(option_year) == (new Number(yyyy)+1) && new Number(option_month) > 1) {
+                    option.remove();
+                    return;
+                }
+                if(new Number(option_year) > (new Number(yyyy)+1)) {
+                    option.remove();
+                    return;
+                }
+            }
+            else{
+                if(new Number(option_year) > new Number(yyyy)){
+                    option.remove();
+                    return;
+                }
+                if(((option_month>(new Number(mm)+1)) && (option_year == yyyy))){
+                    option.remove();
+                    return;
+                }
+            }
+        })
+    }
 
     function SortAll(){
         let table = document.querySelector('.c-table');
@@ -165,7 +196,7 @@ const classlistRendering = ()=>{
         window.location.href = `/eielms/pages/academy/class/class.list.php?${sessionSelect.name}=${value}`;
     }
 
-    
+    sessionLimit();
     addToolBar();
     getAllRowsFromPages();
     //  SortAll();
