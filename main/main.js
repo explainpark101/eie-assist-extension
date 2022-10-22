@@ -56,7 +56,20 @@ const activationTest = async (callback) => {
     await chrome.storage.local.get("EiE_ASSIST_activation",(result)=>{
         let activationKey = result.EiE_ASSIST_activation;
         // console.log(activationKey);
-        if(activationKey == "01088009369"){
+        let activationList = [
+            "01088009369",
+            "eie_shoutjoy",
+            "eie51833332",  
+            "eie59421803",
+            "eie96363972",
+            "eie96347930",
+            "eie21922452",
+            "eie41117251",
+            "eie86441905",
+            "eie_ailee",
+            "노원중계EiE",
+        ];
+        if(activationList.includes(activationKey)){
             resultParent = true;
         }
         if(resultParent){
