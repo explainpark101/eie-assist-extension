@@ -10,7 +10,10 @@
       "128":"logo/logo128.png"
     },
     "content_scripts": [
-
+    { 
+      "js": ["main/main.js"],
+      "matches": ["https://eie.co.kr/eielms/pages/*"]
+    },
     { 
       "css":["academy/dashboard/dashboard.css"],
       "js": ["background/jquery.nodom.js","main/main.js","academy/dashboard/getInformations.js","academy/dashboard/dashboard.js"],
@@ -18,7 +21,7 @@
     },
     { 
       "css":["main/main.css"],
-      "js": ["academy/member/myInformationChange.js"],
+      "js": ["main/main.js","academy/member/myInformationChange.js"],
       "matches": ["https://eie.co.kr/eielms/pages/academy/member/mypage.php*"]
     },
     {
@@ -39,7 +42,7 @@
     {
       "js": ["background/jquery.nodom.js","main/main.js", "academy/member/memberInformationEdit.js"],
       "css":["main/main.css"],
-      "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.register.php?method=u&uid=637281&page=1*"]
+      "matches": ["https://eie.co.kr/eielms/pages/academy/member/member.register.php?method=u*"]
     }
   
   ],

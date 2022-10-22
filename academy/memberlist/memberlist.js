@@ -12,4 +12,4 @@ const renderAll = ()=>{
     notStudentColored();
 }
 
-activationTest()
+activationTest(renderAll);
