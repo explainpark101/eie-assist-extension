@@ -164,6 +164,7 @@ const classlistRendering = ()=>{
         rows.forEach(function(row){
             let url = row.querySelector("a").href;
             row.style.backgroundColor = "rgba(0,0,0,0.1)"
+            row.classList.add("unloaded");
             return $.ajax({
                 method:"GET",
                 url:url, 
@@ -184,7 +185,8 @@ const classlistRendering = ()=>{
                     
                     document.querySelectorAll("table.c-table thead tr th")[5].innerText = `학생[${countStudents}명]`
                     row.style.backgroundColor = "";
-                }
+                    row.classList.remove("unloaded");
+            }
             })
         })
     }

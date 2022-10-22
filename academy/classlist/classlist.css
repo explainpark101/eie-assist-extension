@@ -42,8 +42,22 @@ div.search-box>button[type=submit].form-control.mrg-top-20{
    color: white;
 }
 
+table.c-table thead{
+   transition: 0.4s;
+}
+table.c-table:not(:has(.unloaded)) thead *{
+   background-color: #343a40;
+   color:white;
+   font-weight: 600;
+   transition: 0.4s;
 
-
-table.c-table.thead td{
-   color:black;
+}
+table.c-table tbody td:nth-child(3), table.c-table tbody th:nth-child(3){
+   width:1%;
+}
+table.c-table tbody td:nth-child(1), table.c-table tbody th:nth-child(1){
+   width:0.1em;
+}
+table.c-table tbody td:nth-child(5), table.c-table tbody td:nth-child(6){
+   white-space: unset;
 }
