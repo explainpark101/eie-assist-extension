@@ -28,6 +28,11 @@ function 광고판이동(){
     // document.querySelector(".page-nav").insertAdjacentElement("afterbegin", 광고판);
 }
 
+function dashboardURLsetting() {
+    let mainLogoUrl = document.querySelector("div.logo").parentElement;
+    let dashboardButton = document.querySelector(".side-nav-menu li.nav-item a");
+    dashboardButton.href = mainLogoUrl.href;
+}
 
 const renderMain = ()=>{
     document.querySelector("div.header-container ul.nav-left li").insertAdjacentHTML("afterend",`<span id="toolbox"></span>`);
@@ -37,6 +42,7 @@ const renderMain = ()=>{
     headerNewButtonEmbeded("/eielms/pages/academy/community/advice.list.php", "btn btn-info", "상담일지");
 
     광고판이동();
+    dashboardURLsetting();
 }
 /**
  * LocalStorage를 이용하여 코드가 맞을 경우, 사용가능한 상태로 변경됨.
