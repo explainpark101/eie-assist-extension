@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
-    "author":"박재형",
-    "name": "EIE LMS Assistant (중계)",
-    "version": "1.3",
-    "description": "eie LMS의 사용을 돕습니다.",
+    "author":"Park, JaeHyung",
+    "name": "EIE LMS Assistant (Nowon Junggye Campus)",
+    "version": "2.0",
+    "description": "This is assistant for EiE LMS Junggye. This app needs authentication to activate it.",
     "icons":{
       "16":"logo/logo16.png",
       "48":"logo/logo48.png",
@@ -51,7 +51,7 @@
   },
   "action": {
     "default_popup": "brower_action/index.html",
-    "default_title": "Test"
+    "default_title": "EiE LMS Assist"
   },
   "permissions": ["activeTab", "scripting", "storage"]
 

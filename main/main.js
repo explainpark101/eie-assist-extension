@@ -58,16 +58,7 @@ const activationTest = async (callback) => {
         // console.log(activationKey);
         let activationList = [
             "01088009369",
-            "eie_shoutjoy",
-            "eie51833332",  
-            "eie59421803",
-            "eie96363972",
-            "eie96347930",
-            "eie21922452",
-            "eie41117251",
-            "eie86441905",
-            "eie_ailee",
-            "노원중계EiE",
+            "01041229369"
         ];
         if(activationList.includes(activationKey)){
             resultParent = true;
