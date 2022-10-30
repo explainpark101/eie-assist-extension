@@ -215,6 +215,8 @@ const classregisterRendering = ()=>{
             document.querySelector("select#session_uid").disabled = false;
     }
 
+    
+
     /*
     모달창에 대해서 함수를 구현해야함. 다음 질의를 참고해야함.
     */
@@ -234,7 +236,8 @@ const classregisterRendering = ()=>{
         reviveProgramSelection();
         appendDeletebtnProgram();
         deleteProgramBtn();
-    })
+        
+    });
 
     document.querySelectorAll("button[data-toggle=modal]").forEach((element)=>{element.addEventListener("click",addStyleToCtableModal);})
 }

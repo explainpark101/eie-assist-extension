@@ -186,6 +186,7 @@ const classlistRendering = ()=>{
                     document.querySelectorAll("table.c-table thead tr th")[5].innerText = `학생[${countStudents}명]`
                     row.style.backgroundColor = "";
                     row.classList.remove("unloaded");
+                    if(!document.querySelectorAll("table.c-table tbody .unloaded").length) searchByNames();
             }
             })
         })

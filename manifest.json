@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "author":"Park, JaeHyung",
     "name": "EIE LMS Assistant (Nowon Junggye Campus)",
-    "version": "2.0",
+    "version": "2.1",
     "description": "This is assistant for EiE LMS Junggye. This app needs authentication to activate it.",
     "icons":{
       "16":"logo/logo16.png",
@@ -53,7 +53,7 @@
     "default_popup": "brower_action/index.html",
     "default_title": "EiE LMS Assist"
   },
-  "permissions": ["activeTab", "scripting", "storage"]
+  "permissions": ["storage"]
 
   
   
