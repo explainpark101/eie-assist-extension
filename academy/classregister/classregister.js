@@ -226,8 +226,7 @@ const classregisterRendering = ()=>{
         학생목록불러오기();
     })
     
-
-    window.addEventListener("load", ()=>{
+    const renderAll = () => {
         addDeleteToStudent();
         addDeleteToTeacher();
         appendDeletebtnTeacher();
@@ -236,8 +235,22 @@ const classregisterRendering = ()=>{
         reviveProgramSelection();
         appendDeletebtnProgram();
         deleteProgramBtn();
-        
+    }
+
+    const rednerAll_event = ()=>{
+        renderAll();
+        document.querySelectorAll("div.page-nav div.pn-toolbar h5.pn-toolbar-meta").forEach(el => {
+            el.removeEventListener("click", rednerAll_event);
+        })
+    }
+
+    window.addEventListener("load", ()=>{
+        renderAll();
     });
+    document.querySelectorAll("div.page-nav div.pn-toolbar h5.pn-toolbar-meta").forEach(el=>{
+        el.innerText = "수업등록 / Load EiE Assistant";
+        el.addEventListener("click", rednerAll_event);
+    })
 
     document.querySelectorAll("button[data-toggle=modal]").forEach((element)=>{element.addEventListener("click",addStyleToCtableModal);})
 }

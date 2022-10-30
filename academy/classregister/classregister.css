@@ -14,3 +14,6 @@
     font-weight: 500;
 }
 
+div.page-nav div.pn-toolbar h5.pn-toolbar-meta{
+    cursor : pointer;
+}
