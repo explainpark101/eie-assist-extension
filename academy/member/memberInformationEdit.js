@@ -1,4 +1,4 @@
-function unlockBirthDate(){
+const unlockBirthDate = () => {
     document.querySelector("input[name=birth]").disabled = false;
     document.querySelector("input[name=birth]").removeAttribute("readonly");
     let supportText = document.querySelector("input[name=birth]").parentElement.querySelector(".support-text");
@@ -7,8 +7,8 @@ function unlockBirthDate(){
     supportText.style.color = "crimson";
 }
 
-const renderAll = () => {
+const memberInformationEditrenderAll = () => {
     unlockBirthDate();
 }
 
-activationTest(renderAll)
+activationTest(memberInformationEditrenderAll)

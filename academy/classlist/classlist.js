@@ -1,7 +1,13 @@
 const classlistRendering = ()=>{
-    function getAllRowsFromPages(){
+    if(window.location.href.includes("modify")) return;
+    const locationHref = new URL(window.location.href);
+    let activateClassListRendering = true;
+    if(locationHref.search.endsWith("=") || locationHref.search == "") activateClassListRendering = false;
+    const getAllRowsFromPages= ()=>{
+        if(!activateClassListRendering) return;
         let ajaxArray = [];
-        let allpages = document.querySelectorAll("div.table_paginate a");
+        let allpages = Array.from(document.querySelectorAll("div.table_paginate a")).filter(el=>!(el.classList.contains("pg_start")||el.classList.contains("pg_end")));
+        console.log(allpages)
         for( a of allpages ){
             if (a.id=="table2_last") return getAllTeacherNames(document.querySelectorAll(".c-table tbody tr"));
         }
@@ -19,6 +25,10 @@ const classlistRendering = ()=>{
             ajaxURL.searchParams["page"] = page_num;
 
             let tbody = document.querySelector("table.c-table tbody");
+            if(ajaxURL.origin == "null") return;
+            // console.log(ajaxURL)
+
+            
             let ajax = $.ajax({
                 type: "GET",
                 contentType:"html",
@@ -40,12 +50,11 @@ const classlistRendering = ()=>{
         document.querySelector("div.table_paginate").remove(); // 페이지 선택 제거
         $.when(ajaxArray).then(function(){
             let rows = document.querySelectorAll(".c-table tbody tr");
-            console.log("loaded", rows);
             getAllTeacherNames(rows);
         })
     }
 
-    function sessionLimit(){
+    const sessionLimit = () => {
         var today = new Date();
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
@@ -77,9 +86,23 @@ const classlistRendering = ()=>{
         })
     }
 
-    function SortAll(){
+    const SortAll = () =>{
         let table = document.querySelector('.c-table');
         let rows = table.querySelectorAll('tbody>tr');
+        rows = Array.from(rows).sort((a,b)=>{
+            let a_number = +a.querySelector("td:nth-child(3)").innerText;
+            let b_number = +b.querySelector("td:nth-child(3)").innerText;
+            if(a_number > b_number) return 1;
+            if(a_number == b_number) return 0;
+            if(a_number < b_number) return -1;
+            // return a_number - b_number;
+        });
+        const tbody = table.querySelector("tbody");
+        rows.forEach(row=>tbody.insertAdjacentElement("beforeend",row));
+        return;
+
+        // let table = document.querySelector('.c-table');
+        // let rows = table.querySelectorAll('tbody>tr');
         let allRowsArray = new Array();
         let rowDict = new Object();
         for(row of rows){
@@ -102,12 +125,22 @@ const classlistRendering = ()=>{
     function unSortAll(){
         let table = document.querySelector('.c-table');
         let rows = table.querySelectorAll('tbody>tr');
+        rows = Array.from(rows).sort((a,b)=>{
+            let a_number = +a.querySelector("td.text-center").innerText;
+            let b_number = +b.querySelector("td.text-center").innerText;
+            return a_number - b_number;
+        });
+        const tbody = table.querySelector("tbody");
+        rows.forEach(row=>tbody.insertAdjacentElement("beforeend",row));
+        return;
+
+
         let allRowsArray = new Array();
         let rowDict = new Object();
         for(row of rows){
             rowName = new Number(row.childNodes[1].innerText);
             rowDict[rowName] = row;
-            allRowsArray.push(rowName);
+            allRowsArray.push(+rowName);
         }
 
         allRowsArray.sort();
@@ -118,7 +151,7 @@ const classlistRendering = ()=>{
         document.querySelector('.c-table > tbody').innerHTML = "";
 
         for(row of actualRowsArray){
-            table.querySelector("tbody").appendChild(row);
+            table.querySelector("tbody").insertAdjacentElement("beforeend",row);
         }
     }
 
@@ -161,8 +194,11 @@ const classlistRendering = ()=>{
 
     function getAllTeacherNames(rows){
         let countStudents = 0;
-        rows.forEach(function(row){
-            let url = row.querySelector("a").href;
+        rows.forEach((row)=>{
+            // console.log(row);
+            let url = row.querySelector("a")?.href;
+            if(url===undefined) return;
+            
             row.style.backgroundColor = "rgba(0,0,0,0.1)"
             row.classList.add("unloaded");
             return $.ajax({
@@ -194,15 +230,17 @@ const classlistRendering = ()=>{
 
 
     function sessionAutoLoad(){
+        // return;
         let sessionSelect = document.querySelector(`.main-content form div.search-container .search-box select.form-control`);
         let value = sessionSelect.value;
-        window.location.href = `/eielms/pages/academy/class/class.list.php?${sessionSelect.name}=${value}`;
+        // `/classes/?search_session=441&search_target=1&search_keyword=`
+        window.location.href = `/classes/?${sessionSelect.name}=${value}`;
     }
 
     sessionLimit();
     addToolBar();
     getAllRowsFromPages();
-    //  SortAll();
+    SortAll();
     let searchBox = document.querySelector("input.form-control[type=text][name=search_keyword]");
     searchBox.addEventListener("keyup", function(){
         searchByNames();

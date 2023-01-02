@@ -16,6 +16,19 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function AjaxPostReq(url, reqObject){    
+
+    return fetch(reqObject.url,{
+        method: "GET",
+        headers:{
+            csrfmiddlewaretoken: csrftoken,
+            "Content-Type":"application/json; charset=euc-kr",
+            "X-CSRFToken": csrftoken,
+        }
+    })
+    .then(resp=>reqObject.load(resp))
+    .catch(err=>reqObject.error(err))
+
+    
     let xmlRequest = new XMLHttpRequest();
     reqObject.data.csrfmiddlewaretoken = csrftoken;
     xmlRequest.onreadystatechange = (event)=>{

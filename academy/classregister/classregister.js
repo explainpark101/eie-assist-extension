@@ -1,5 +1,5 @@
 const classregisterRendering = ()=>{
-    let studentsUrl = "https://eie.co.kr/eielms/pages/modal/academy/class.student.select2.php?page=";
+    let studentsUrl = "/common/student_select?page=";
 
     function removeCharactersFromArray(target,removeList){
 
@@ -139,7 +139,7 @@ const classregisterRendering = ()=>{
 
     const appendDeletebtnTeacher = ()=>{
         document.querySelector(`button[data-modal-title="강사 선택"]`).insertAdjacentHTML("beforebegin",`
-        <button type="button" id="teacher_add_del" class="btn btn-eie-assist" style="display: inline-block;">강사 삭제 추가</button>
+        <button type="button" id="teacher_add_del" class="btn btn-eie-assist" style="display: inline-block;">강사 선택 삭제</button>
         `)
         document.querySelector("button#teacher_add_del").addEventListener("click", (event)=>{
             addDeleteToTeacher();
@@ -147,7 +147,7 @@ const classregisterRendering = ()=>{
     }
     const appendDeletebtnStudent = ()=>{
         document.querySelector(`button[data-modal-title="학생 선택"]`).insertAdjacentHTML("beforebegin",`
-        <button type="button" id="student_add_del" class="btn btn-eie-assist" style="display: inline-block;">학생 삭제 추가</button>
+        <button type="button" id="student_add_del" class="btn btn-eie-assist" style="display: inline-block;">학생 선택 삭제</button>
         `)
         document.querySelector("button#student_add_del").addEventListener("click", (event)=>{
             addDeleteToStudent();
@@ -223,10 +223,17 @@ const classregisterRendering = ()=>{
     // https://stackoverflow.com/questions/17461682/calling-a-function-on-bootstrap-modal-open
 
     document.querySelector("button[data-modal-title='학생 선택']").addEventListener("click", ()=>{
+        const ProgramStock = document.querySelector("div#program_stock");
+        const studentOriginalCount = document.querySelector("input#student_org_count");
+        const ProgramStockNumber = Array.from(ProgramStock.querySelectorAll("input")).map(el=>+(el.value)).reduce((a,b)=>a+b,0);
+        studentOriginalCount.value = ProgramStockNumber;
+        // console.log(studentOriginalCount.value, ProgramStockNumber);
+        
         학생목록불러오기();
     })
     
     const renderAll = () => {
+        console.log("loading")
         addDeleteToStudent();
         addDeleteToTeacher();
         appendDeletebtnTeacher();
@@ -247,12 +254,94 @@ const classregisterRendering = ()=>{
     window.addEventListener("load", ()=>{
         renderAll();
     });
+    
     document.querySelectorAll("div.page-nav div.pn-toolbar h5.pn-toolbar-meta").forEach(el=>{
         el.innerText = "수업등록 / Load EiE Assistant";
         el.addEventListener("click", rednerAll_event);
     })
 
     document.querySelectorAll("button[data-toggle=modal]").forEach((element)=>{element.addEventListener("click",addStyleToCtableModal);})
+
+
+    const 불러오기 = () => {
+        let $textarea = document.querySelector("textarea#가져오기input");
+     
+        content = JSON.parse($textarea.value);
+        console.log(content);
+        let subject = document.querySelector("input[name=subject]");
+        let start = document.querySelector("input[name=class_start_time]");
+        let end = document.querySelector("input[name=class_end_time]");
+        let color_select = document.querySelector("select[name=class_color]");
+        start.value = content.start_time;
+        end.value = content.end_time;
+        subject.value = content.subject_name;
+        color_select.querySelectorAll(`option`).forEach(option=>{
+            if(option.value == content.color_select) {
+              option.selected = true;
+              color_select.parentElement.querySelector(`span[data-color='${content.color_select}']`).click();
+              
+            }
+        })
+    }
+     
+    const 가져오기 = () => {
+        let start = document.querySelector("input[name=class_start_time]");
+        let end = document.querySelector("input[name=class_end_time]");
+        let subject = document.querySelector("input[name=subject]");
+        let color_select = document.querySelector("select[name=class_color]");
+        let result = {
+           start_time:start.value,
+           end_time:end.value,
+           subject_name:subject.value,
+           color_select:color_select.value,
+        }
+        let $textarea = document.querySelector("textarea#가져오기input");
+        $textarea.innerText = JSON.stringify(result);
+        $textarea.select();
+        document.execCommand('copy');
+        alert(`복사됨! ${$textarea.innerText}`);
+        
+    }
+     
+     
+     
+    const addButtonForSaveLoad = () => {
+        toolbar = document.querySelector("div.page-nav div.pn-toolbar");
+        let newRegister = `
+        <a href="./class.register.php?page=1" target="_blank">
+            <i class="fa fa-plus u-mr-xsmall u-opacity-medium"></i> 수업등록
+        </a>
+        `
+        
+        let 불러오기btn = document.createElement("button");
+        불러오기btn.classList.add("btn");
+        불러오기btn.classList.add("btn-primary");
+        불러오기btn.innerText = "반정보 입력";
+        
+        let 가져오기btn = document.createElement("button");
+        가져오기btn.classList.add("btn");
+        가져오기btn.classList.add("btn-info");
+        가져오기btn.innerText = "반정보 복사하기";
+        
+        let 가져오기input = document.createElement("textarea");
+        가져오기input.placeholder = "여기에 코드를 복사붙여넣기";
+        가져오기input.id = "가져오기input";
+        
+        불러오기btn.addEventListener("click", ()=>{
+            불러오기();
+        })
+        가져오기btn.addEventListener("click", ()=>{
+            가져오기();
+        })
+        
+        toolbar.insertAdjacentElement("beforeend", 가져오기btn);
+        toolbar.insertAdjacentHTML("beforeend", newRegister);
+        toolbar.insertAdjacentElement("beforeend", 가져오기input);
+        toolbar.insertAdjacentElement("beforeend", 불러오기btn);
+    }
+     
+    addButtonForSaveLoad();
+    renderAll();
 }
 
 
