@@ -7,8 +7,13 @@ const unlockBirthDate = () => {
     supportText.style.color = "crimson";
 }
 
+const removeRequiredEngName = () => {
+    document.querySelector("input[name=name_eng]").removeAttribute("required");
+}
+
 const memberInformationEditrenderAll = () => {
     unlockBirthDate();
+    removeRequiredEngName();
 }
 
 activationTest(memberInformationEditrenderAll)

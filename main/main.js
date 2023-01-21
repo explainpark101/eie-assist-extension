@@ -36,7 +36,7 @@ function dashboardURLsetting() {
 
 const renderMain = ()=>{
     document.querySelector("div.header-container ul.nav-left li").insertAdjacentHTML("afterend",`<span id="toolbox"></span>`);
-    headerNewButton("https://www.jlive.shop/", "btn btn-primary", "JLive LMS(Presentation Video)");
+    headerNewButton("https://www.jlive.co.kr/", "btn btn-primary", "JLive LMS(Presentation Video)");
     headerNewButton("https://www.youtube.com/channel/UCTF7qRuacBq0Eic_en4FYHw", "btn btn-danger", "EiE Presentation Server");
     headerNewButtonEmbeded("/eielms/pages/academy/community/cletter.list.php", "btn btn-info", "알림장");
     headerNewButtonEmbeded("/eielms/pages/academy/community/advice.list.php", "btn btn-info", "상담일지");

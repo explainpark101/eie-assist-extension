@@ -223,6 +223,7 @@ const classregisterRendering = ()=>{
     // https://stackoverflow.com/questions/17461682/calling-a-function-on-bootstrap-modal-open
 
     document.querySelector("button[data-modal-title='학생 선택']").addEventListener("click", ()=>{
+        // 반등록을 할 수 없도록 오류나는 현상 해결
         const ProgramStock = document.querySelector("div#program_stock");
         const studentOriginalCount = document.querySelector("input#student_org_count");
         const ProgramStockNumber = Array.from(ProgramStock.querySelectorAll("input")).map(el=>+(el.value)).reduce((a,b)=>a+b,0);

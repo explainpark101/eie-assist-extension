@@ -1,61 +1,79 @@
 {
-    "manifest_version": 3,
-    "author":"Park, JaeHyung",
-    "name": "EIE LMS Assistant (Nowon Junggye Campus)",
-    "version": "2.6",
-    "description": "This is assistant for EiE LMS Junggye. This app needs authentication to activate it.",
-    "icons":{
-      "16":"logo/logo16.png",
-      "48":"logo/logo48.png",
-      "128":"logo/logo128.png"
-    },
-    "content_scripts": [
-    { 
+  "manifest_version": 3,
+  "author": "Park, JaeHyung",
+  "name": "EIE LMS Assistant (Nowon Junggye Campus)",
+  "version": "3.1",
+  "description": "This is assistant for EiE LMS Junggye. This app needs authentication to activate it.",
+  "icons": {
+    "16": "logo/logo16.png",
+    "48": "logo/logo48.png",
+    "128": "logo/logo128.png"
+  },
+  "content_scripts": [
+    {
       "js": ["main/main.js"],
       "matches": ["https://branch.eie.co.kr/*"]
     },
-    { 
-      "css":["academy/dashboard/dashboard.css"],
-      "js": ["background/jquery.nodom.js","main/main.js","academy/dashboard/getInformations.js","academy/dashboard/dashboard.js"],
-      "matches": ["https://branch.eie.co.kr/"]
+    {
+      "css": ["academy/dashboard/dashboard.css"],
+      "js": [
+        "background/jquery.nodom.js",
+        "main/main.js",
+        "academy/dashboard/getInformations.js",
+        "academy/dashboard/dashboard.js"
+      ],
+      "matches": [
+        "https://branch.eie.co.kr/",
+        "https://branch.eie.co.kr/main/?class_today=*"
+      ]
     },
-    { 
-      "css":["main/main.css"],
-      "js": ["main/main.js","academy/member/myInformationChange.js"],
+    {
+      "css": ["main/main.css"],
+      "js": ["main/main.js", "academy/member/myInformationChange.js"],
       "matches": ["https://branch.eie.co.kr/autho/mypage*"]
     },
     {
-      "js": ["background/jquery.nodom.js","main/main.js","academy/classlist/classlist.js"],
-      "css":["academy/classlist/classlist.css"],
+      "js": [
+        "background/jquery.nodom.js",
+        "main/main.js",
+        "academy/classlist/classlist.js"
+      ],
+      "css": ["academy/classlist/classlist.css"],
       "matches": ["https://branch.eie.co.kr/classes/*"]
     },
     {
-      "js": [ "main/main.js","academy/memberlist/memberlist.js"],
-      "css":["academy/memberlist/memberlist.css"],
+      "js": ["main/main.js", "academy/memberlist/memberlist.js"],
+      "css": ["academy/memberlist/memberlist.css"],
       "matches": ["https://branch.eie.co.kr/member/*"]
     },
     {
-      "js": ["background/jquery.nodom.js","main/main.js", "academy/classregister/classregister.js"],
-      "css":["academy/classregister/classregister.css"],
-      "matches": ["https://branch.eie.co.kr/classes/register*", "https://branch.eie.co.kr/classes/modify*"]
+      "js": [
+        "background/jquery.nodom.js",
+        "main/main.js",
+        "academy/classregister/classregister.js"
+      ],
+      "css": ["academy/classregister/classregister.css"],
+      "matches": [
+        "https://branch.eie.co.kr/classes/register*",
+        "https://branch.eie.co.kr/classes/modify*"
+      ]
     },
     {
-      "js": ["background/jquery.nodom.js","main/main.js", "academy/member/memberInformationEdit.js"],
-      "css":["main/main.css"],
+      "js": [
+        "background/jquery.nodom.js",
+        "main/main.js",
+        "academy/member/memberInformationEdit.js"
+      ],
+      "css": ["main/main.css"],
       "matches": ["https://branch.eie.co.kr/member/modify?uid=*"]
     }
-  
   ],
   "background": {
-    "service_workers" : ["background/jquery.nodom.js"]
+    "service_workers": ["background/jquery.nodom.js"]
   },
   "action": {
     "default_popup": "brower_action/index.html",
     "default_title": "EiE LMS Assist"
   },
   "permissions": ["storage"]
-
-  
-  
-  }
-  
+}
