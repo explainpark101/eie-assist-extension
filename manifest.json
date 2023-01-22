@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "author": "Park, JaeHyung",
   "name": "EIE LMS Assistant (Nowon Junggye Campus)",
-  "version": "3.1",
+  "version": "3.2",
   "description": "This is assistant for EiE LMS Junggye. This app needs authentication to activate it.",
   "icons": {
     "16": "logo/logo16.png",
@@ -12,10 +12,11 @@
   "content_scripts": [
     {
       "js": ["main/main.js"],
+      "css": ["main/main.css"],
       "matches": ["https://branch.eie.co.kr/*"]
     },
     {
-      "css": ["academy/dashboard/dashboard.css"],
+      "css": ["academy/dashboard/dashboard.css", "main/main.css"],
       "js": [
         "background/jquery.nodom.js",
         "main/main.js",
@@ -38,12 +39,12 @@
         "main/main.js",
         "academy/classlist/classlist.js"
       ],
-      "css": ["academy/classlist/classlist.css"],
+      "css": ["academy/classlist/classlist.css", "main/main.css"],
       "matches": ["https://branch.eie.co.kr/classes/*"]
     },
     {
       "js": ["main/main.js", "academy/memberlist/memberlist.js"],
-      "css": ["academy/memberlist/memberlist.css"],
+      "css": ["academy/memberlist/memberlist.css", "main/main.css"],
       "matches": ["https://branch.eie.co.kr/member/*"]
     },
     {
@@ -52,7 +53,7 @@
         "main/main.js",
         "academy/classregister/classregister.js"
       ],
-      "css": ["academy/classregister/classregister.css"],
+      "css": ["academy/classregister/classregister.css", "main/main.css"],
       "matches": [
         "https://branch.eie.co.kr/classes/register*",
         "https://branch.eie.co.kr/classes/modify*"
